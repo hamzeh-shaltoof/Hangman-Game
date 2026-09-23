@@ -239,7 +239,11 @@
 }
 
 @media (max-width: 750px) {
+  * {
+    font-family: sans-serif;
+  }
   .hangman {
+    display: block;
     width: 100%;
   }
   .characters span {
@@ -255,6 +259,7 @@
     height: 36px;
     width: 36px;
     font-size: 21px;
-      border-bottom-width: 2px;
+    border-bottom-width: 2px;
   }
+
 }
