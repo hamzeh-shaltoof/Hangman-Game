@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+  text-transform: capitalize;
+  font-family: cursive;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.hangman {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, auto));
+  gap: 15px;
+  margin: 22px auto auto auto;
+  width: 62%;
+}
+.progress {
+  position: relative;
+  background-color: #ebebeba6;
+  height: 320px;
+}
+
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-content: flex-start;
+  margin-top: 17px;
+}
+.characters span {
+  background-color: rgb(3 118 139);
+  padding: 7px;
+  width: 56px;
+  height: 56px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  cursor: pointer;
+}
+.word {
+  background-color: #ebebeba6;
+  padding: 13px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+.char {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 55px;
+  width: 55px;
+  border-bottom: 4px solid black;
+  font-size: 35px;
+}
+.char-selected {
+  background-color: #ababab;
+}
+.base,
+.stand,
+.hang {
+  position: absolute;
+  background-color: black;
+}
+.base {
+  width: 74px;
+  height: 4px;
+  bottom: 28px;
+  left: 153px;
+}
+
+.stand {
+  width: 5px;
+  height: 260px;
+  bottom: 32px;
+  left: 190px;
+}
+
+.hang {
+  width: 105px;
+  height: 4px;
+  left: 194px;
+  top: 40px;
+}
+.hang::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 35px;
+  background-color: black;
+  left: 101px;
+}
+.rope {
+  position: absolute;
+  left: 265px;
+  top: 74px;
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
+  border: 4px dashed;
+}
+.man {
+  position: relative;
+}
+.head {
+  position: absolute;
+  left: 272px;
+  top: 81px;
+  width: 48px;
+  height: 48px;
+  border: 4px solid black;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.body {
+  position: absolute;
+  height: 100px;
+  width: 4px;
+  background-color: black;
+  left: 295px;
+  top: 128px;
+}
+
+.hand {
+  position: relative;
+}
+.hand::before {
+  content: "";
+  position: absolute;
+  height: 31px;
+  width: 5px;
+  background-color: black;
+  left: 312px;
+  top: 140px;
+  transform: skew(-229deg);
+}
+.hand::after {
+  content: "";
+  position: absolute;
+  height: 31px;
+  width: 5px;
+  background-color: black;
+  left: 276px;
+  top: 140px;
+  transform: skew(229deg);
+}
+
+.legs {
+  position: relative;
+}
+.legs::before {
+  content: "";
+  position: absolute;
+  height: 31px;
+  width: 5px;
+  background-color: black;
+  left: 279.5px;
+  top: 227px;
+  transform: skew(-43deg);
+}
+.legs::after {
+  content: "";
+  position: absolute;
+  height: 31px;
+  width: 5px;
+  background-color: black;
+  left: 308px;
+  top: 226px;
+  transform: skew(43deg);
+}
+
+.popup {
+  position: absolute;
+  background-color: white;
+  width: 500px;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  text-align: center;
+  line-height: 1.5;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 0px rgb(3 118 139);
+  box-shadow: 0px 0px 3px 0px rgba(144, 197, 255, 1);
+  z-index: 1;
+}
+.popup.open {
+  animation-name: test;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes test {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.popup h2 {
+  color: rgb(3 118 139);
+  font-weight: 900;
+  font-size: 35px;
+}
+
+.popup > p {
+  font-size: 20px;
+  color: #555;
+}
+.popup h2 p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 51px;
+}
+.popup h2 img {
+  width: 95px;
+}
+
+.popup button {
+  padding: 0 30px;
+  margin-top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: rgb(3 118 139);
+  color: white;
+  border-radius: 10px;
+  line-height: 2.4;
+}
+
+@media (max-width: 750px) {
+  .hangman {
+    width: 100%;
+  }
+  .characters span {
+    width: 36px;
+    height: 36px;
+    font-size: 21px;
+  }
+  .word {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .char {
+    height: 36px;
+    width: 36px;
+    font-size: 21px;
+      border-bottom-width: 2px;
+  }
+}
