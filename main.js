@@ -1,7 +1,8 @@
-// let words = await myFetch();
+let words = await myFetch();
 let hangman = ["base", "stand", "hang", "rope", "head", "body", "hand", "legs"];
 
-let selectedWord = hangman[Math.floor(Math.random() * hangman.length)];
+console.log(words.length);
+let selectedWord = words[Math.floor(Math.random() * words.length)];
 let remainingWord = selectedWord;
 
 let countErrors = 0;
@@ -128,22 +129,21 @@ function openPopup(isWon, hangmanDiv) {
   hangmanDiv.style.pointerEvents = "none";
 
   if (isWon) {
-  playSound("sounds/win.mp3");
+    playSound("sounds/win.mp3");
 
     createPopup(
       "Congratulations",
       "You Win",
       "images/applause.png",
-     100 - (countErrors * 7) 
+      100 - countErrors * 7,
     );
     return;
   }
-  playSound("sounds/lose.mp3",1);
-  createPopup("Game Over", "You Lose", "images/sad.png", 100 - (countErrors * 7) );
-
+  playSound("sounds/lose.mp3", 1);
+  createPopup("Game Over", "You Lose", "images/sad.png", 100 - countErrors * 7);
 }
 
-function playSound(soundPath , currentTime = 0) {
+function playSound(soundPath, currentTime = 0) {
   let sound = new Audio(soundPath);
   sound.currentTime = currentTime;
   sound.play();
@@ -183,11 +183,11 @@ function createPopup(title, subTitle, imagePath, score) {
   createSpan1.textContent = score > 50 ? score : 0;
   createP2.textContent = "Classification : ";
   createP3.textContent = "Correct Word : ";
-  createP3.style.color = "red";
+  createP3.style.color = score > 50 ? "#22c55e" : "red";
   createSpan2.textContent = classifyResult(score);
   createButton.textContent = "Play Again";
   createSpan3.textContent = selectedWord;
-   
+
   createPopupDiv.append(createH2);
   createH2.append(createPInsideH2);
   createPInsideH2.append(createImage);
@@ -200,40 +200,36 @@ function createPopup(title, subTitle, imagePath, score) {
   createPopupDiv.append(createButton);
 
   document.body.append(createPopupDiv);
-  createPopupDiv.classList.add("open")
+  createPopupDiv.classList.add("open");
 
-  createButton.addEventListener("click" , () => replayGame(createPopupDiv))
-
+  createButton.addEventListener("click", () => replayGame(createPopupDiv));
 }
-function classifyResult(score){
-  switch(Math.floor(score/10)){
-    case 10 :
-    case 9 :
+function classifyResult(score) {
+  switch (Math.floor(score / 10)) {
+    case 10:
+    case 9:
       return "Excellent";
-    case 8 :
+    case 8:
       return "Very Good";
-    case 7 :
+    case 7:
       return "Good";
-    case 6 :
+    case 6:
       return "Acceptable";
-    default : 
-          return "Failed";
+    default:
+      return "Failed";
   }
-
 }
-function replayGame(createPopupDiv){
+function replayGame(createPopupDiv) {
   let hangmanDiv = document.querySelector(".hangman");
   hangmanDiv.remove();
   createPopupDiv.remove();
- selectedWord = words[Math.floor(Math.random() * words.length)];
- remainingWord = selectedWord;
- countErrors = 0;
- buildGame();
+  selectedWord = words[Math.floor(Math.random() * words.length)];
+  remainingWord = selectedWord;
+  countErrors = 0;
+  buildGame();
 }
-async function myFetch(){
-return await fetch("https://random-word-api.herokuapp.com/all")
-            .then(response => response.json())
-            .then(data => data)
-
-
+async function myFetch() {
+  return await fetch("https://random-word-api.herokuapp.com/all")
+    .then((response) => response.json())
+    .then((data) => data);
 }

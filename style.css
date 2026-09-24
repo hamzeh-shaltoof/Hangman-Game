@@ -193,7 +193,7 @@
 }
 .popup.open {
   animation-name: test;
-  animation-duration: 0.4s;
+  animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -273,6 +273,7 @@
   }
   .popup h2 {
     font-size: 28px;
+    padding-bottom: 6px;
   }
   .popup h2 img {
     width: 52px;
@@ -282,7 +283,7 @@
   }
   .popup button {
     padding: 0px 20px;
-    margin-top: 17px;
+    margin-top: 13px;
     font-size: 15px;
     padding: 10px 20px;
     line-height: 1;
