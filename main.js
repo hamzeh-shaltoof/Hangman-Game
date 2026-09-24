@@ -214,6 +214,7 @@ function classifyResult(score) {
     case 7:
       return "Good";
     case 6:
+    case 5:
       return "Acceptable";
     default:
       return "Failed";
