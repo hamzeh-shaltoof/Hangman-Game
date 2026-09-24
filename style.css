@@ -236,6 +236,7 @@
   color: white;
   border-radius: 10px;
   line-height: 2.4;
+  border: none;
 }
 
 @media (max-width: 750px) {
@@ -245,6 +246,9 @@
   .hangman {
     display: block;
     width: 100%;
+  }
+  .characters {
+    padding-bottom: 15px;
   }
   .characters span {
     width: 36px;
@@ -261,5 +265,26 @@
     font-size: 21px;
     border-bottom-width: 2px;
   }
-
+  .progress {
+    margin-left: -25px;
+  }
+  .popup {
+    width: 320px;
+  }
+  .popup h2 {
+    font-size: 28px;
+  }
+  .popup h2 img {
+    width: 52px;
+  }
+  .popup > p {
+    font-size: 17px;
+  }
+  .popup button {
+    padding: 0px 20px;
+    margin-top: 17px;
+    font-size: 15px;
+    padding: 10px 20px;
+    line-height: 1;
+  }
 }

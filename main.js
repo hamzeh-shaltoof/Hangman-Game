@@ -1,7 +1,7 @@
-let words = await myFetch();
+// let words = await myFetch();
 let hangman = ["base", "stand", "hang", "rope", "head", "body", "hand", "legs"];
 
-let selectedWord = words[Math.floor(Math.random() * hangman.length)];
+let selectedWord = hangman[Math.floor(Math.random() * hangman.length)];
 let remainingWord = selectedWord;
 
 let countErrors = 0;
